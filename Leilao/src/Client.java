@@ -1,10 +1,10 @@
 
 public class Client {
-	String name;
-	String adress;
-	String number;
-	String email;
-	String codigo;
+	private String name;
+	private String adress;
+	private String number;
+	private String email;
+	private String codigo;
 	
 	static int ID = 1;
 	
@@ -16,6 +16,18 @@ public class Client {
 		this.email = email;
 		this.codigo = "C"+Integer.toString(ID);
 		ID++;
+	}
+	
+	public String getName()
+	{
+		String copia = this.name;
+		return copia;
+	}
+	
+	public String getCodigo()
+	{
+		String copia = this.codigo;
+		return copia;
 	}
 	
 	@Override

@@ -1,15 +1,15 @@
 
 public class Lote {
-	double valor_inicial;
-	double incremento_minimo;
-	String resumo;
-	boolean situacao;
-	double kmtragem;
-	String marca;
-	String modelo;
-	float fab_ano;
-	String codigo;
-	static int ID = 1;
+	private double valor_inicial;
+	private double incremento_minimo;
+	private String resumo;
+	private boolean situacao;
+	private double kmtragem;
+	private String marca;
+	private String modelo;
+	private float fab_ano;
+	private String codigo;
+	private static int ID = 1;
 	
 	public Lote(double val_ini, double inc_min, String resumo, double km, String marca, String modelo, float fab_ano)
 	{
@@ -25,6 +25,18 @@ public class Lote {
 		ID++;
 	}
 
+	public double getIncremento_minimo()
+	{
+		double copia = this.incremento_minimo;
+		return copia;
+	}
+	
+	public String getCodigo()
+	{
+		String copia = this.codigo;
+		return copia;
+	}
+	
 	@Override 
 	public String toString()
 	{

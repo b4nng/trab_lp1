@@ -1,9 +1,9 @@
 import java.util.Scanner;
 public class Cliente {
-	String name;
-	String adress;
-	double number;
-	String email;
+	private String name;
+	private String adress;
+	private double number;
+	private String email;
 	
 	void insert()
 	{

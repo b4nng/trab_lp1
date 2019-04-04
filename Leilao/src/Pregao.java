@@ -1,69 +1,64 @@
+import java.util.ArrayList;
 
 public class Pregao {
-	Lote[] lotes;
-	String data_oferta;
-	boolean situacao;
-	Lance[] lances;
-	Lance higher_lance;
+	private ArrayList<Lote> lotes;
+	private String data_oferta;
+	private boolean situacao;
+	private ArrayList<Lance> lances;
+	private Lance higher_lance;
+	private int tam_lotes;
+	private int tam_lances;
 	
 	public Pregao(int quantidade_lotes, String data_oferta, boolean situacao, int qtd_lances)
 	{
 		this.data_oferta = data_oferta;
-		this.lotes = new Lote[quantidade_lotes];
+		this.lotes = new ArrayList<Lote>();
 		this.situacao = situacao;
-		this.lances = new Lance[qtd_lances];
+		this.tam_lotes = quantidade_lotes;
+		this.tam_lances = qtd_lances;
+		this.lances = new ArrayList<Lance>();
 		this.higher_lance = new Lance();
 	}
 	
 	public void addLote(Lote lote)
 	{
-		for (int i=0; i < lotes.length; i++)
+		if(this.lotes.size() < tam_lotes) 
 		{
-			if(lotes[i] == null)
-			{
-				lotes[i] = lote;
-				System.out.println("\nLote Registrado");
-				return;
-			}
+			lotes.add(lote);
+			System.out.println("\nLote Registrado");
 		}
-		System.out.println("\nSem mais espaco para lote neste pregao, num max de "+lotes.length+" atingido");
+		else
+		{
+			System.out.println("\nSem mais espaco para lote neste pregao, num max de"+ tam_lotes +" atingido");
+		}
 	}
 	
 	public boolean searchLote(Lote l)
 	{
-		for(int i=0; i < this.lotes.length; i++)
-		{
-			if(this.lotes[i] == l)
-			{
-				return true;
-			}
-		}
-		return false;
+		return lotes.contains(l);
+			
 	}
 	
 	public boolean confereEspaco()
 	{
-		for(int i=0; i < lotes.length; i++)
+		if(this.lotes.size() < tam_lotes)
 		{
-			if(lotes[i] == null)
-			{
-				System.out.println("Você ainda não preencheu todos os espaços de lote! ("+lotes.length+")");
-				return false;
-			}
+			System.out.println("Você ainda não preencheu todos os espaços de lote! ("+tam_lotes+")");
+			return false;
 		}
-		return true;
+		else {return true;}
 	}
 	
 	public void darLance(Lance lance)
 	{
-		if(searchLote(lance.lote)) {
-			for (int i=0; i < lances.length; i++)
+		if(searchLote(lance.getLote())) {
+			for (int i=0; i < lances.size(); i++)
 			{
-				if(lances[i] == null)
+				if(lances.get(i) == null)
 				{
-					lances[i] = lance;
+					lances.add(lance);
 					System.out.println("\nLance Registrado");
-					if(lance.valor_lance > higher_lance.valor_lance)
+					if(lance.getValor_lance() > higher_lance.getValor_lance())
 					{
 						this.higher_lance = lance;
 					}
@@ -95,14 +90,14 @@ public class Pregao {
 			
 			for(Lote lote: lotes)
 			{
-				System.out.println(lote.codigo);
+				System.out.println(lote.getCodigo());
 			}
 			
 			System.out.println("\nData do pregao: "+this.data_oferta);
 			
 			for(Lance lance: lances)
 			{
-				System.out.println("Codigo:"+lance.codigo);
+				System.out.println("Codigo:"+lance.getCodigo());
 			}
 		}
 	}
