@@ -9,8 +9,8 @@ public class Lote {
 	String marca;
 	String modelo;
 	float fab_ano;
-	
-	public Lote() {}
+	String codigo;
+	static int ID = 1;
 	
 	public Lote(double val_ini, double inc_min, String resumo, double km, String marca, String modelo, float fab_ano)
 	{
@@ -21,8 +21,11 @@ public class Lote {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.fab_ano = fab_ano;
+		this.situacao = true;
+		this.codigo = "L"+Integer.toString(ID);
+		ID++;
 	}
-	
+
 	@Override 
 	public String toString()
 	{
@@ -33,7 +36,8 @@ public class Lote {
 		"\nAno de Fab: "+this.fab_ano+
 		"\nResumo deste Lote: "+this.resumo+
 		"\nValor Inicial "+this.valor_inicial+" Reais"+
-		"\nLance Minimo: "+this.incremento_minimo+" Reais\n"		
+		"\nLance Minimo: "+this.incremento_minimo+" Reais"+
+		"\nCodigo Lote: "+this.codigo+" \n\n"		
 		;
 	}
 }

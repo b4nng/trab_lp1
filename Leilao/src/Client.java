@@ -4,9 +4,9 @@ public class Client {
 	String adress;
 	String number;
 	String email;
+	String codigo;
 	
-	public Client()
-	{}
+	static int ID = 1;
 	
 	public Client(String name,String adress,String number,String email)
 	{
@@ -14,6 +14,8 @@ public class Client {
 		this.adress = adress;
 		this.number = number;
 		this.email = email;
+		this.codigo = "C"+Integer.toString(ID);
+		ID++;
 	}
 	
 	@Override
@@ -21,9 +23,10 @@ public class Client {
 	{
 		return
 		"Nome: "+this.name+
+		"\nCodigo Cliente: "+this.codigo+
 		"\nEndereço: "+this.adress+
 		"\nNumero de Telefone: "+this.number+
-		"\nEmail: "+this.email
+		"\nEmail: "+this.email+" \n\n"
 		;
 	}
 }
