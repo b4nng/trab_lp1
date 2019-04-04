@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class Lote {
 	double valor_inicial;

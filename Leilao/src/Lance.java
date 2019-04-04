@@ -8,12 +8,21 @@ public class Lance {
 	
 	public Lance(Client cliente, Lote lote, double valor_lance)
 	{
-		this.cliente = cliente;
-		this.lote = lote;
-		this.valor_lance = valor_lance;
-		this.codigo = lote.codigo+"-"+Integer.toString(ID);
-		ID++;
+		if(valor_lance >= lote.incremento_minimo)
+		{
+			this.cliente = cliente;
+			this.lote = lote;
+			this.valor_lance = valor_lance;
+			this.codigo = lote.codigo+"-"+Integer.toString(ID);
+			ID++;
+		}
+		else 
+		{
+			System.out.println("O Lance não foi efetuado, valor invalido, deve ser maior ou igual a "+lote.incremento_minimo+"\n");
+		}
+		
 	}
+	public Lance() {}
 	
 	@Override
 	public String toString()
