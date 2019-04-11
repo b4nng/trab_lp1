@@ -1,6 +1,6 @@
 
 public class Pregao {
-	Lote[] lotes;
+	//Lote[] lotes;
 	String data_oferta;
 	boolean situacao;
 	Lance[] lances;
