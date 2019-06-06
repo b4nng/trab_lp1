@@ -7,10 +7,10 @@ public class Pregao {
 	private Lance higher_lance;
 	private int tam_lances;
 	
-	public Pregao(int quantidade_lotes, String data_oferta, boolean situacao, int qtd_lances)
+	public Pregao(String data_oferta, int qtd_lances)
 	{
 		this.data_oferta = data_oferta;
-		this.situacao = situacao;
+		this.situacao = true;
 		this.tam_lances = qtd_lances;
 		this.lances = new ArrayList<Lance>();
 		this.higher_lance = new Lance();
@@ -18,14 +18,23 @@ public class Pregao {
 
 	public boolean adicionaLance(Lance ln) //Adiciona um lance no pregao, dentro da arraylist lances
 	{
-		if(this.lances.size() >= this.tam_lances)
+		if(this.lances.size() <= this.tam_lances)
 		{
-			this.lances.add(ln);
 			if(this.lances.size() == this.tam_lances)
 			{
 				this.situacao = false;
+				return false;
 			}
-			if(this.higher_lance.getValor_lance() < ln.getValor_lance())
+			
+			this.lances.add(ln);
+			
+			if(this.lances.size() == this.tam_lances)
+			{
+				this.situacao = false;
+				return false;
+			}
+			
+			if(this.higher_lance.getValor_lance() < ln.getValor_lance() || this.higher_lance.getValor_lance() == 0)
 			{
 				this.higher_lance = ln;
 			}
@@ -35,6 +44,7 @@ public class Pregao {
 		{
 			return false;
 		}
+		
 	}
 	
 	public void relatorio()
@@ -50,10 +60,10 @@ public class Pregao {
 			
 			
 			System.out.println("\nData do pregao: "+this.data_oferta);
-			
-			for(Lance lance: lances)
+			System.out.println("\nLances do Pregao:\n");
+			for(Lance l: lances)
 			{
-				System.out.println("Codigo:"+lance.getCodigo());
+				System.out.println(l.toString());
 			}
 	}
 }
