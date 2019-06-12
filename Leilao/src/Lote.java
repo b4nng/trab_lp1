@@ -1,4 +1,3 @@
-
 abstract class Lote {
 	private double valor_inicial; // Valor que o lote se iniciará
 	private double incremento_minimo; // O valor mínimo de cada lance
