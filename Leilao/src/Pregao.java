@@ -26,6 +26,7 @@ public class Pregao {
 	}
 	
 	public void iniciaPregao() { 			//Inicia ou reinicia o tempo do pregao
+		if(!this.situacao) {this.situacao = true;}
 		this.hora_inicio = Instant.now();
 	}
 	
